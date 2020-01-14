@@ -168,6 +168,22 @@ And wait for the result as below:
 
 ---
 
+add a new network policy, because the project is protected by istio network policy
+
+~~~yaml
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: web-allow-external
+spec:
+  podSelector:
+    matchLabels:
+      app: inventory-quarkus  
+  ingress:
+    - {}
+~~~
+
 In order to trace networking and data transaction, we will call the Inventory service via **curl** commands via CodeReady Workspaces Terminal:
 Be sure to use your route URL of Inventory.
 
