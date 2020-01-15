@@ -275,6 +275,9 @@ Let's deploy **Grafana Dashboards** to OpenShift. Go to _Project Status_ page in
 
 Select **Image Name** and input _grafana/grafana_ to search the Prometheus container image via clicking on _Search_ icon.
 
+The image should be:
+`registry.redhat.ren:5443/docker.io/grafana/grafana`
+
 ![Grafana]({% image_path search-grafana-image.png %})
 
 Once you find the image correctly as the above screenshot, click on **Deploy**. It takes 1 ~ 2 mins to deploy a pod.
