@@ -168,6 +168,22 @@ And wait for the result as below:
 
 ---
 
+add a new network policy, because the project is protected by istio network policy
+
+~~~yaml
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: web-allow-external
+spec:
+  podSelector:
+    matchLabels:
+      app: inventory-quarkus  
+  ingress:
+    - {}
+~~~
+
 In order to trace networking and data transaction, we will call the Inventory service via **curl** commands via CodeReady Workspaces Terminal:
 Be sure to use your route URL of Inventory.
 
@@ -224,6 +240,9 @@ Go to _Project Status_ page in _userXX-monitoring_ project and click on **Deploy
 
 Select **Image Name** and input _prom/prometheus_ to search the Prometheus container image via clicking on _Search_ icon.
 
+The image should like:
+`registry.redhat.ren:5443/docker.io/prom/prometheus`
+
 ![Prometheus]({% image_path search-prometheus-image.png %})
 
 Once you find the image correctly as the above page, click on **Deploy**. It takes 1 ~ 2 mins to deploy a pod.
@@ -255,6 +274,9 @@ Let's deploy **Grafana Dashboards** to OpenShift. Go to _Project Status_ page in
 ![Grafana]({% image_path add-to-project-grafana.png %})
 
 Select **Image Name** and input _grafana/grafana_ to search the Prometheus container image via clicking on _Search_ icon.
+
+The image should be:
+`registry.redhat.ren:5443/docker.io/grafana/grafana`
 
 ![Grafana]({% image_path search-grafana-image.png %})
 
